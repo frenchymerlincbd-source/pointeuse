@@ -18,10 +18,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <header style={{ padding: "16px 20px", background: "#222", color: "#fff" }}>
           <div style={{ display: "flex", gap: 24, alignItems: "center" }}>
             <h1 style={{ margin: 0 }}>Pointeuse</h1>
-            <nav style={{ display: "flex", gap: 16 }}>
-              <a href="/" style={{ color: "#fff", textDecoration: "none" }}>Accueil</a>
-              <a href="/pointer" style={{ color: "#fff", textDecoration: "none" }}>Pointer</a>
-            </nav>
+           <nav style={{ display:"flex", gap:16 }}>
+  <a href="/" style={{ color:"#fff", textDecoration:"none" }}>Accueil</a>
+  <a href="/pointer" style={{ color:"#fff", textDecoration:"none" }}>Pointer</a>
+  <a href="/historique" style={{ color:"#fff", textDecoration:"none" }}>Historique</a>
+  <a href="/alertes" style={{ color:"#fff", textDecoration:"none" }}>Alertes</a>
+  <a href="/dashboard" style={{ color:"#fff", textDecoration:"none" }}>Dashboard</a>
+</nav>
+
           </div>
         </header>
 
