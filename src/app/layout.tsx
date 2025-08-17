@@ -26,13 +26,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
-      <head>
-        {/* Vérification Google Search Console */}
-        <meta
-          name="google-site-verification"
-          content="ZgoTO0vDWAB9rIVPpFfKurO_ZwUCda52osVw42OEGR4"
-        />
-      </head>
+  <head>
+  <meta
+    name="google-site-verification"
+    content="ZgoTO0vDWAB9rIVPpFfKurO_ZwUCda52osVw42OEGR4"
+  />
+  <link
+    rel="canonical"
+    href="https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/"
+  />
+</head>
+
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <header style={{ padding: "12px 20px", background: "#222", color: "#fff" }}>
           <nav style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
