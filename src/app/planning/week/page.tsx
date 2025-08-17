@@ -15,6 +15,26 @@ import fr from "date-fns/locale/fr";
 type Employe = { id: string; nom: string; email: string };
 type Shift = { id: string; employe_id: string; debut: string; fin: string; published?: boolean };
 
+import NewShiftForm from "./NewShiftForm";
+
+// …dans ton composant de page
+return (
+  <section>
+    <h2>Planning de la semaine</h2>
+
+    {/* Ton filtre / navigation semaine ici */}
+
+    <div style={{ marginTop:12, padding:12, border:"1px solid #eee", borderRadius:8 }}>
+      <h3 style={{ marginBottom:8 }}>Nouveau shift</h3>
+      <NewShiftForm onCreated={load} />
+    </div>
+
+    {/* Ton tableau/semaine existant */}
+    { /* … */ }
+  </section>
+);
+
+
 export default function PlanningWeekPage() {
   // ancre = lundi de la semaine affichée
   const [anchor, setAnchor] = useState<Date>(() =>
