@@ -1,15 +1,34 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { ReactNode } from "react";
+// dans RootLayout, à l’intérieur de <head>…</head>
+<html lang="fr">
+  <head>
+    <meta name="google-site-verification" content="<meta name="google-site-verification" content="ZgoTO0vDWAB9rIVPpFfKurO_ZwUCda52osVw42OEGR4" />" />
+  </head>
+  <body>…</body>
+</html>
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+
+
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Pointeuse",
-  description: "Application de suivi des pointages",
+  title: "Pointeuse – Planning & Pointages en Boutique",
+  description:
+    "Application de pointage simple pour les boutiques : planning hebdo, borne de pointage, alertes de retard et dashboard managers.",
+  metadataBase: new URL("https://pointeuse-xxxxx.vercel.app"), // remplace
+  openGraph: {
+    title: "Pointeuse – Planning & Pointages",
+    description:
+      "Planning hebdo, borne de pointage (iPad), alertes de retard et dashboard managers.",
+    url: "https://pointeuse-xxxxx.vercel.app",
+    siteName: "Pointeuse",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
+
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
