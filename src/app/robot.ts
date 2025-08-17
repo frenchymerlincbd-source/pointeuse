@@ -4,6 +4,6 @@ export default function robots() {
     rules: [
       { userAgent: '*', allow: '/' },
     ],
-    sitemap: 'https://pointeuse-xxxxx.vercel.app/sitemap.xml', // remplace par ton URL
+    sitemap: 'https://pointeuse-six.vercel.app/', // remplace par ton URL
   };
 }

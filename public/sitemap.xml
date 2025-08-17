@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/</loc><priority>1.0</priority></url>
+  <url><loc>https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/pointer</loc><priority>0.8</priority></url>
+  <url><loc>https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/employes</loc><priority>0.8</priority></url>
+  <url><loc>https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/planning/week</loc><priority>0.8</priority></url>
+  <url><loc>https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/alertes</loc><priority>0.6</priority></url>
+  <url><loc>https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/pointages</loc><priority>0.6</priority></url>
+  <url><loc>https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/dashboard</loc><priority>0.6</priority></url>
+</urlset>

@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   title: "Pointeuse – Planning & Pointages en Boutique",
   description:
     "Application de pointage simple pour les boutiques : planning hebdo, borne de pointage, alertes de retard et dashboard managers.",
-  metadataBase: new URL("https://pointeuse-xxxxx.vercel.app"), // ← remplace par ton URL
+  metadataBase: new URL("https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app"), // ← remplace par ton URL
   openGraph: {
     title: "Pointeuse – Planning & Pointages",
     description:
       "Planning hebdo, borne de pointage (iPad), alertes de retard et dashboard managers.",
-    url: "https://pointeuse-xxxxx.vercel.app", // ← remplace aussi ici
+    url: "https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app", // ← remplace aussi ici
     siteName: "Pointeuse",
     type: "website",
   },
