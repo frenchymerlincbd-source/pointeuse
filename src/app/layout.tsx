@@ -11,12 +11,14 @@ export const metadata: Metadata = {
   title: "Pointeuse – Planning & Pointages en Boutique",
   description:
     "Application de pointage simple pour les boutiques : planning hebdo, borne de pointage, alertes de retard et dashboard managers.",
-  metadataBase: new URL("https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app"), // ← remplace par ton URL
+  metadataBase: new URL(
+    "https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app"
+  ),
   openGraph: {
     title: "Pointeuse – Planning & Pointages",
     description:
       "Planning hebdo, borne de pointage (iPad), alertes de retard et dashboard managers.",
-    url: "https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app", // ← remplace aussi ici
+    url: "https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app",
     siteName: "Pointeuse",
     type: "website",
   },
@@ -26,17 +28,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
-  <head>
-  <meta
-    name="google-site-verification"
-    content="ZgoTO0vDWAB9rIVPpFfKurO_ZwUCda52osVw42OEGR4"
-  />
-  <link
-    rel="canonical"
-    href="https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/"
-  />
-</head>
-
+      <head>
+        {/* Vérification Search Console */}
+        <meta
+          name="google-site-verification"
+          content="ZgoTO0vDWAB9rIVPpFfKurO_ZwUCda52osVw42OEGR4"
+        />
+        <link
+          rel="canonical"
+          href="https://pointeuse-2pws0k8jc-babas-projects-752ca6fd.vercel.app/"
+        />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <header style={{ padding: "12px 20px", background: "#222", color: "#fff" }}>
           <nav style={{ display: "flex", gap: 16, alignItems: "center", flexWrap: "wrap" }}>
