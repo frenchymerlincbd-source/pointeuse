@@ -1,15 +1,7 @@
-<nav>
-  <a href="/" style={{ marginRight: 15, color: "#fff" }}>Accueil</a>
-  <a href="/pointer" style={{ marginRight: 15, color: "#fff" }}>Pointer</a>
-  <a href="/historique" style={{ marginRight: 15, color: "#fff" }}>Historique</a>
-  <a href="/alertes" style={{ color: "#fff" }}>Alertes</a>
-</nav>
+'use client';
 
-
-
-"use client";
-import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -32,27 +24,27 @@ export default function AlertesPage() {
   async function load() {
     setLoading(true);
     const { data, error } = await supabase
-      .from("alerts")
-      .select("id, created_at, minutes_late, threshold, seen, employes:employe_id(nom,email)")
-      .order("created_at", { ascending: false })
+      .from('alerts')
+      .select('id, created_at, minutes_late, threshold, seen, employes:employe_id(nom,email)')
+      .order('created_at', { ascending: false })
       .limit(100);
     if (!error && data) setRows(data as any);
     setLoading(false);
   }
 
-  async function markSeen(id: string) {
-    const { error } = await supabase.from("alerts").update({ seen: true }).eq("id", id);
-    if (!error) load();
-  }
-
   useEffect(() => {
     load();
     const ch = supabase
-      .channel("rt-alerts")
-      .on("postgres_changes", { event: "INSERT", schema: "public", table: "alerts" }, load)
+      .channel('rt-alerts')
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'alerts' }, load)
       .subscribe();
     return () => { supabase.removeChannel(ch); };
   }, []);
+
+  async function markSeen(id: string) {
+    const { error } = await supabase.from('alerts').update({ seen: true }).eq('id', id);
+    if (!error) load();
+  }
 
   return (
     <section>
@@ -60,11 +52,10 @@ export default function AlertesPage() {
       {loading && <p>Chargement…</p>}
       {!loading && rows.length === 0 && <p>Rien à signaler ✅</p>}
       <ul style={{ marginTop: 12 }}>
-        {rows.map((a) => (
+        {rows.map(a => (
           <li key={a.id} style={{ marginBottom: 8 }}>
-            <b>{a.employes?.nom ?? "—"}</b> ({a.employes?.email ?? "—"}) — retard
-            {" "}de <b>{a.minutes_late} min</b> (seuil {a.threshold} min) —{" "}
-            {new Date(a.created_at).toLocaleString("fr-FR")}
+            <b>{a.employes?.nom ?? '—'}</b> ({a.employes?.email ?? '—'}) — retard de <b>{a.minutes_late} min</b>
+            {' '} (seuil {a.threshold} min) — {new Date(a.created_at).toLocaleString('fr-FR')}
             {!a.seen && (
               <button onClick={() => markSeen(a.id)} style={{ marginLeft: 8 }}>
                 Marquer vu
