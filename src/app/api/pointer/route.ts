@@ -1,54 +1,26 @@
 import { NextResponse } from "next/server";
-import bcrypt from "bcryptjs";
-import { createClient } from "@supabase/supabase-js";
-// import relatif (lib est à la racine du projet)
-import { supabase } from "../../..//lib/supabaseClient"; // <-- ajuste si besoin
-
-// Si tu n'as pas encore lib/supabaseClient.ts à la racine, crée-le :
-/*
-   // lib/supabaseClient.ts
-   import { createClient } from "@supabase/supabase-js";
-   export const supabase = createClient(
-     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-   );
-*/
+import { supabase } from "@/lib/supabaseClient";
 
 export async function POST(req: Request) {
   try {
-    const { email, pin, action } = await req.json() as {
-      email: string; pin: string; action?: "ENTREE" | "SORTIE";
-    };
-    const type = action ?? "ENTREE";
+    const { email, type } = await req.json() as { email?: string; type?: "ENTREE"|"SORTIE" };
 
-    // 1) chercher l’employé
-    const { data: employe, error } = await supabase
-      .from("employes")
-      .select("id, nom, pin")
-      .eq("email", email)
-      .single();
-
-    if (error || !employe) {
-      return NextResponse.json({ success:false, message:"Employé introuvable" }, { status:404 });
+    if (!email || !type) {
+      return NextResponse.json({ ok:false, message:"email et type requis" }, { status:400 });
     }
 
-    // 2) vérifier le PIN
-    const ok = bcrypt.compareSync(pin, employe.pin);
-    if (!ok) {
-      return NextResponse.json({ success:false, message:"PIN incorrect" }, { status:401 });
+    const { error } = await supabase.from("pointages").insert({
+      email,
+      type,
+      horodatage: new Date().toISOString(),
+    });
+
+    if (error) {
+      return NextResponse.json({ ok:false, message:error.message }, { status:500 });
     }
 
-    // 3) insérer le pointage
-    const { error: insErr } = await supabase
-      .from("pointages")
-      .insert({ employe_id: employe.id, type });
-
-    if (insErr) {
-      return NextResponse.json({ success:false, message:insErr.message }, { status:500 });
-    }
-
-    return NextResponse.json({ success:true, message:`Pointage ${type} OK — ${employe.nom}` });
+    return NextResponse.json({ ok:true });
   } catch (e:any) {
-    return NextResponse.json({ success:false, message:e.message }, { status:500 });
+    return NextResponse.json({ ok:false, message:e?.message ?? "Erreur" }, { status:500 });
   }
 }
