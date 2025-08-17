@@ -13,10 +13,11 @@ export default function PointerPage() {
     setMsg(null);
     try {
       const res = await fetch("/api/pointer", {
-        method: "POST",
-        headers: { "Content-Type":"application/json" },
-        body: JSON.stringify({ email, type }),
-      });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ email, pin, type }), // <= important
+});
+
       const json = await res.json();
       if (!res.ok) throw new Error(json.message || "Erreur");
       setMsg("Pointage enregistré ✅");
